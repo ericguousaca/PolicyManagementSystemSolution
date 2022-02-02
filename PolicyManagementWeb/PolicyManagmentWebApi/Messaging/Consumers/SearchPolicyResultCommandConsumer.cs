@@ -33,7 +33,7 @@ namespace PolicyManagementWebApi.Messaging.Consumers
 
             try
             {
-                System.Threading.Thread.Sleep(10000);
+                System.Threading.Thread.Sleep(5000);
 
                 await this._hubContext.Clients.Client(connectionId).SendAsync("SearchPolicyAsync", SearchPolicyAsyncStatus.RESULT_RECEIVED, null);
 
@@ -45,7 +45,7 @@ namespace PolicyManagementWebApi.Messaging.Consumers
                 mongoResultCommand.SearchPolicyCommand = resultCommand.SearchPolicyCommand;
                 mongoResultCommand.PolicyDetails = resultCommand.PolicyDetails;
 
-                System.Threading.Thread.Sleep(10000);
+                System.Threading.Thread.Sleep(5000);
                 await this._searchPolicyRepo.AddSearchPolicyResultCommand(mongoResultCommand);
 
                 await this._hubContext.Clients.Client(connectionId).SendAsync("SearchPolicyAsync", SearchPolicyAsyncStatus.RESULT_AVAILABLE, mongoResultCommand.PolicyDetails);
