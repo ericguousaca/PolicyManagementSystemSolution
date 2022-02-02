@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "8832b1c1-104c-4fdb-b7c6-53662492f65f",
+		"name": "CustomerApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customer Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\": 0,\r\n  \"firstName\": \"Jian Dong\",\r\n  \"lastName\": \"Guo\",\r\n  \"dateOfBirth\": \"11/05/1978\",\r\n  \"address\": \"123 ABC Road, Bayside, NY 11361 USA\",\r\n  \"contactNumber\": \"(836)384-5635\",\r\n  \"email\": \"JianDongGuo@test.com\",\r\n  \"salary\": 10000,\r\n  \"panCardNumber\": \"222383\",\r\n  \"employeeType\": \"salaried\",\r\n  \"employer\": \"Cognizant\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44334/api/v1.0/Customer/Register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44334",
+					"path": [
+						"api",
+						"v1.0",
+						"Customer",
+						"Register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer Register Ocelot",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\": 0,\r\n  \"firstName\": \"Yuke\",\r\n  \"lastName\": \"Guo\",\r\n  \"dateOfBirth\": \"11/05/1996\",\r\n  \"address\": \"123 ABC Road, Bayside, NY 11361 USA\",\r\n  \"contactNumber\": \"(836)384-5635\",\r\n  \"email\": \"yuke6@test.com\",\r\n  \"salary\": 100000,\r\n  \"panCardNumber\": \"2637383\",\r\n  \"employeeType\": \"salaried\",\r\n  \"employer\": \"Google\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44330/api/v1.0/Customer/Register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44330",
+					"path": [
+						"api",
+						"v1.0",
+						"Customer",
+						"Register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AWS-Customer Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\": 0,\r\n  \"firstName\": \"Eric4\",\r\n  \"lastName\": \"Guo\",\r\n  \"dateOfBirth\": \"11/05/1978\",\r\n  \"address\": \"123 ABC Road, Bayside, NY 11361 USA\",\r\n  \"contactNumber\": \"(836)384-5635\",\r\n  \"email\": \"JianDongGuo@test.com\",\r\n  \"salary\": 10000,\r\n  \"panCardNumber\": \"222383\",\r\n  \"employeeType\": \"salaried\",\r\n  \"employer\": \"Cognizant\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sn8oe09sh7.execute-api.us-east-1.amazonaws.com/v1/customer/register",
+					"protocol": "https",
+					"host": [
+						"sn8oe09sh7",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

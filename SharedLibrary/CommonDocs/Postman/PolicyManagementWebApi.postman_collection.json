@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "f76e0573-1307-43c8-ae3d-92b4d96de68a",
+		"name": "PolicyManagementWebApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Submit Search Policy Command",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"policyType\": \"\",\r\n  \"numberOfYears\": \"2\",\r\n  \"companyName\": \"\",\r\n  \"policyId\": \"\",\r\n  \"policyName\": \"Travel Policy #1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44321/api/v1.0/PolicySearch/SubmitSearchPolicyCommand",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44321",
+					"path": [
+						"api",
+						"v1.0",
+						"PolicySearch",
+						"SubmitSearchPolicyCommand"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit Search Policy Command Ocelot",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"policyType\": \"\",\r\n  \"numberOfYears\": \"3\",\r\n  \"companyName\": \"\",\r\n  \"policyId\": \"\",\r\n  \"policyName\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44330/api/v1.0/PolicySearch/SubmitSearchPolicyCommand",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44330",
+					"path": [
+						"api",
+						"v1.0",
+						"PolicySearch",
+						"SubmitSearchPolicyCommand"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Search Policy Results",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44321/api/v1.0/PolicySearch/GetSearchPolicyResults/ba1e8ea3-1caa-4826-8d07-c7ae29603c0c",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44321",
+					"path": [
+						"api",
+						"v1.0",
+						"PolicySearch",
+						"GetSearchPolicyResults",
+						"ba1e8ea3-1caa-4826-8d07-c7ae29603c0c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Search Policy Results Ocelot",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44330/api/v1.0/PolicySearch/GetSearchPolicyResults/60c74921-1862-46ad-a011-3e08dca2985e",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44330",
+					"path": [
+						"api",
+						"v1.0",
+						"PolicySearch",
+						"GetSearchPolicyResults",
+						"60c74921-1862-46ad-a011-3e08dca2985e"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "131b1e20-e5cf-4e72-8892-d991f0a5da3e",
+		"name": "PolicyApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all policies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44313/api/v1.0/Policy/GetAll",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44313",
+					"path": [
+						"api",
+						"v1.0",
+						"Policy",
+						"GetAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all policies Ocelot",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44330/api/v1.0/Policy/GetAll",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44330",
+					"path": [
+						"api",
+						"v1.0",
+						"Policy",
+						"GetAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Policy Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n  \"policyName\": \"Travel Policy #1\",\r\n  \"startDate\": \"04/02/2022\",\r\n  \"durationInYears\": 2,\r\n  \"companyName\": \"Test Company #4\",\r\n  \"initialDeposit\": 1200,\r\n  \"policyType\": \"Travel Insurance\",\r\n  \"userTypes\": [\r\n    \"A\", \"B\",\r\n  ],\r\n  \"termsPerYear\": 2,\r\n  \"termAmount\": 1200,\r\n  \"interest\": 11.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44313/api/v1.0/Policy/Register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44313",
+					"path": [
+						"api",
+						"v1.0",
+						"Policy",
+						"Register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Policy Register Ocelot",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n  \"policyName\": \"Test Policy #3\",\r\n  \"startDate\": \"02/01/2022\",\r\n  \"durationInYears\": 3,\r\n  \"companyName\": \"Test Company #3\",\r\n  \"initialDeposit\": 1200,\r\n  \"policyType\": \"Life Insurance\",\r\n  \"userTypes\": [\r\n    \"A\",\"B\",\"E\"\r\n  ],\r\n  \"termsPerYear\": 6,\r\n  \"termAmount\": 500,\r\n  \"interest\": 14.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44330/api/v1.0/Policy/Register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44330",
+					"path": [
+						"api",
+						"v1.0",
+						"Policy",
+						"Register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search policy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"searchId\": \"\",\r\n  \"policyType\": \"\",\r\n  \"numberOfYears\": 3,\r\n  \"companyName\": \"\",\r\n  \"policyId\": \"\",\r\n  \"policyName\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44313/api/v1.0/Policy/Searches",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44313",
+					"path": [
+						"api",
+						"v1.0",
+						"Policy",
+						"Searches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search policy Ocelot",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"searchId\": \"\",\r\n  \"policyType\": \"\",\r\n  \"numberOfYears\": 3,\r\n  \"companyName\": \"\",\r\n  \"policyId\": \"\",\r\n  \"policyName\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44330/api/v1.0/Policy/Searches",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44330",
+					"path": [
+						"api",
+						"v1.0",
+						"Policy",
+						"Searches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AWS Test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "awseb-AWSEB-OSTPQN9XLGNY-914443446.us-east-1.elb.amazonaws.com",
+					"host": [
+						"awseb-AWSEB-OSTPQN9XLGNY-914443446",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
