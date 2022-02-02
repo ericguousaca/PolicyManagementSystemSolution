@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PolicyManagementWebApi</name>
+    </assembly>
+    <members>
+        <member name="T:PolicyManagementWebApi.Repositories.ISearchPolicyRepository">
+            <summary>
+            Add or get Search Policy from Database 
+            </summary>
+        </member>
+        <member name="M:PolicyManagementWebApi.Repositories.ISearchPolicyRepository.AddSearchPolicyResultCommand(CommonLibrary.Messaging.Commands.SearchPolicyResultCommand)">
+            <summary>
+            Add search result command object into DB
+            </summary>
+            <param name="resultCommand">An search result command object<see cref="T:CommonLibrary.Messaging.Commands.SearchPolicyResultCommand"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:PolicyManagementWebApi.Repositories.ISearchPolicyRepository.GetSearchPolicyResultCommand(System.String)">
+            <summary>
+            Get search policy result command object from DB
+            </summary>
+            <param name="searchId">The unique search Id</param>
+            <returns>A search policy result command object <see cref="T:CommonLibrary.Messaging.Commands.ISearchPolicyResultCommand"></see></returns>
+        </member>
+        <member name="T:PolicyManagementWebApi.Repositories.MongoSearchPolicyRepository">
+            <summary>
+            Add or get Search Policy Result from MonogoDB
+            </summary>
+        </member>
+        <member name="M:PolicyManagementWebApi.Repositories.MongoSearchPolicyRepository.GetSearchPolicyResultCommand(System.String)">
+            <summary>
+            Get search policy result command object from MongoDB
+            </summary>
+            <param name="searchId">The unique search Id</param>
+            <returns>A search policy result command object <see cref="T:CommonLibrary.Messaging.Commands.ISearchPolicyResultCommand"></see></returns>
+        </member>
+        <member name="M:PolicyManagementWebApi.Repositories.MongoSearchPolicyRepository.AddSearchPolicyResultCommand(CommonLibrary.Messaging.Commands.SearchPolicyResultCommand)">
+            <summary>
+            Add search result command object into MongoDB
+            </summary>
+            <param name="resultCommand">An search result command object<see cref="T:CommonLibrary.Messaging.Commands.SearchPolicyResultCommand"/></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
