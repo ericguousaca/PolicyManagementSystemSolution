@@ -1,0 +1,50 @@
+﻿{
+   "CodeGenerationMode": 0,
+   "ContextClassName": "PolicyDbContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "DbModels",
+   "OutputPath": "DbModels",
+   "ProjectRootNamespace": "PolicyApiLibrary",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Policy]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PolicyType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PolicyUserType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserType]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "LAPTOP-0A65RD3U.PolicyDb",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}

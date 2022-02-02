@@ -1,0 +1,136 @@
+<h4 class="text-decoration-underline">Search Policy</h4>
+<div *ngIf="message">
+  <p class="text text-white fs-5 bg-success p-1">{{ message }}</p>
+</div>
+<div *ngIf="error">
+  <p class="text text-warning fs-5 p-1">{{ error }}</p>
+</div>
+<div>
+  <form [formGroup]="searchPolicyForm">
+    <div class="row">
+      <div class="col-sm-2">
+        <label for="policyType" class="form-label">Policy Type:</label>
+        <select
+          class="form-select"
+          id="policyType"
+          name="policyType"
+          formControlName="policyType"
+        >
+          <option value="">Any type</option>
+          <option value="Vehicle Insurance">Vehicle Insurance</option>
+          <option value="Travel Insurance">Travel Insurance</option>
+          <option value="Life Insurance">Life Insurance</option>
+          <option value="Health Insurance">Health Insurance</option>
+          <option value="Child Plans">Child Plans</option>
+          <option value="Retirement Plans">Retirement Plans</option>
+        </select>
+      </div>
+      <div class="col-sm-2">
+        <label for="policyId" class="form-label">Policy Id:</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Contains policy Id"
+          id="policyId"
+          name="policyId"
+          formControlName="policyId"
+        />
+      </div>
+      <div class="col-sm-2">
+        <label for="policyName" class="form-label">Policy Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Contains policy name"
+          id="policyName"
+          name="policyName"
+          formControlName="policyName"
+        />
+      </div>
+      <div class="col-sm-2">
+        <label for="companyName" class="form-label">Company Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Contains company name"
+          id="companyName"
+          name="companyName"
+          formControlName="companyName"
+        />
+      </div>
+      <div class="col-sm-2">
+        <label for="numberOfYears" class="form-label">Number of Years:</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Matches number of years"
+          id="numberOfYears"
+          name="numberOfYears"
+          formControlName="numberOfYears"
+        />
+      </div>
+      <div class="col-sm-2">
+        <button
+          type="button"
+          id="btnDirectSearch"
+          class="btn btn-warning"
+          (click)="onDirectSearch()"
+        >
+          Direct Search
+        </button>
+        <br />
+        <button
+          type="button"
+          id="btnSubmitSearchPolicyParams"
+          class="btn btn-primary mt-1"
+          (click)="onSubmitSearchPolicyParams()"
+        >
+          Async Search
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<hr />
+<div class="mt-3" *ngIf="submittedParams">
+  <ul>
+    <li>
+      <p>Step #1: Below Search Command had been submitted to RabbitMq:</p>
+      <p>{{ submittedParams | json }}</p>
+    </li>
+    <li>
+      Step #2: The back end microservice PolicyApi will consume the submitted
+      search command from RabbitMq automatically, search policy from backend DB
+      and return the search result command to RabbitMq.
+    </li>
+    <li>
+      Step #3: The PlolicyManagementWebApi microservice will consume the
+      returned Result Command from RabbitMq and store search results in MongoDB,
+      and also return search results to client page by <b>SignalR</b> and
+      automatically displayed in the table below.
+    </li>
+    <li>
+      <p>
+        Also can test click below Get Saved Search Result button to get the saved
+        search results from MongoDB via PlolicyManagementWebApi microservice by
+        angular httpclient request:
+      </p>
+      <p>
+        <button
+          class="btn btn-info"
+          (click)="getPolicySearchResults(submittedParams.searchId)"
+          [disabled]="policyDetails == undefined"
+        >
+          Get Saved Search Results
+        </button>
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="mt-3" *ngIf="policyDetails">
+  <app-policy-details [policyDetails]="policyDetails"></app-policy-details>
+</div>
+<!-- <div>
+  <h3>Form Value</h3>
+  {{ searchPolicyForm.value | json }}
+</div> -->

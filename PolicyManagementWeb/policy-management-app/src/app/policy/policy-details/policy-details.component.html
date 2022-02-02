@@ -1,0 +1,38 @@
+<div *ngIf="policyDetails">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Policy Id</th>
+        <th>Policy Name</th>
+        <th>Start Date</th>
+        <th>Duration In Years</th>
+        <th>Company Name</th>
+        <th>Initial Deposit</th>
+        <th>Policy Type</th>
+        <th>User Types</th>
+        <th>Terms Per Year</th>
+        <th>Term Amount</th>
+        <th>Interest</th>
+        <th>Maturity Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let policyDetail of policyDetails">
+        <td>{{ policyDetail.id }}</td>
+        <td>{{ policyDetail.policyId }}</td>
+        <td>{{ policyDetail.policyName }}</td>
+        <td>{{ policyDetail.startDate }}</td>
+        <td>{{ policyDetail.durationInYears }}</td>
+        <td>{{ policyDetail.companyName }}</td>
+        <td>{{ policyDetail.initialDeposit | currency: "USD" }}</td>
+        <td>{{ policyDetail.policyType }}</td>
+        <td>{{ policyDetail.userTypes }}</td>
+        <td>{{ policyDetail.termsPerYear }}</td>
+        <td>{{ policyDetail.termAmount | currency: "USD" }}</td>
+        <td>{{ policyDetail.interest }}%</td>
+        <td>{{ policyDetail.maturityAmount | currency: "USD" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

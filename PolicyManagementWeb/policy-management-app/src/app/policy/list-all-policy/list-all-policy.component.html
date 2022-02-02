@@ -1,0 +1,7 @@
+<h4 class="text-decoration-underline">List All Policies</h4>
+<div *ngIf="error">
+  {{ error }}
+</div>
+<div>
+  <app-policy-details [policyDetails]="policyDetails"></app-policy-details>
+</div>

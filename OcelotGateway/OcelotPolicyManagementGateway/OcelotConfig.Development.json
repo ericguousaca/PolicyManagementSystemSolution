@@ -1,0 +1,103 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/v1.0/Customer/Register",
+      "UpstreamPathTemplate": "/api/v1.0/Customer/Register",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44334
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1.0/Policy/GetAll",
+      "UpstreamPathTemplate": "/api/v1.0/Policy/GetAll",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44313
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1.0/Policy/Register",
+      "UpstreamPathTemplate": "/api/v1.0/Policy/Register",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44313
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1.0/Policy/Searches",
+      "UpstreamPathTemplate": "/api/v1.0/Policy/Searches",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44313
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1.0/PolicySearch/SubmitSearchPolicyCommand",
+      "UpstreamPathTemplate": "/api/v1.0/PolicySearch/SubmitSearchPolicyCommand",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44321
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1.0/PolicySearch/GetSearchPolicyResults/{searchId}",
+      "UpstreamPathTemplate": "/api/v1.0/PolicySearch/GetSearchPolicyResults/{searchId}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44321
+        }
+      ]
+    }
+    //{
+    //  "DownstreamPathTemplate": "/{catchAll}",
+    //  "DownstreamScheme": "wss",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 44321
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/gateway/{catchAll}",
+    //  "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+    //}
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:44330"
+  }
+}
