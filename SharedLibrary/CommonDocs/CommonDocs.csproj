@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="DbScripts\" />
+    <Folder Include="Postman\" />
   </ItemGroup>
 
 </Project>
