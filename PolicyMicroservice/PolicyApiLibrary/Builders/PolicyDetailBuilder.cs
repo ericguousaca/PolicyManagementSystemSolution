@@ -49,7 +49,7 @@ namespace PolicyApiLibrary.Builders
         {
             this._policyDetail.MaturityAmount = this._policy.InitialDeposit
                                         + (this._policy.DurationInYear * this._policy.TermsPerYear * this._policy.TermAmount)
-                                        + (this._policy.DurationInYear * this._policy.TermsPerYear * this._policy.TermAmount) * Convert.ToDecimal(this._policy.Interest);
+                                        + (this._policy.DurationInYear * this._policy.TermsPerYear * this._policy.TermAmount) * (Convert.ToDecimal(this._policy.Interest)/100);
         }
 
         public PolicyDetailViewModel GetPolicyDetail()

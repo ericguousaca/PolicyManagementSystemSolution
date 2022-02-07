@@ -2,6 +2,6 @@
 <div *ngIf="error">
   {{ error }}
 </div>
-<div>
+<div *ngIf="policyDetails">
   <app-policy-details [policyDetails]="policyDetails"></app-policy-details>
 </div>

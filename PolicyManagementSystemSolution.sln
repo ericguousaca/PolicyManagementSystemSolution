@@ -29,7 +29,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolicyManagementWebApi", "P
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OcelotGateway", "OcelotGateway", "{9142DBD6-C838-4C61-BD00-10AF81279E09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotPolicyManagementGateway", "OcelotGateway\OcelotPolicyManagementGateway\OcelotPolicyManagementGateway.csproj", "{82022745-A332-4A59-970D-F00B9B803FDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotPolicyManagementGateway", "OcelotGateway\OcelotPolicyManagementGateway\OcelotPolicyManagementGateway.csproj", "{82022745-A332-4A59-970D-F00B9B803FDA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D307799B-C0A1-45BA-8EF3-63FE8C6E3186}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
