@@ -1,6 +1,13 @@
 <h4 class="text-decoration-underline">Search Policy</h4>
 <div *ngIf="message">
-  <p class="text text-white fs-5 bg-success p-1">{{ message }}</p>
+  <p class="text text-white fs-5 bg-success p-1">
+    {{ message }}
+    <img
+      *ngIf="!this.policyDetails"
+      width="30"
+      src="/assets/images/loading.gif"
+    />
+  </p>
 </div>
 <div *ngIf="error">
   <p class="text text-warning fs-5 p-1">{{ error }}</p>
@@ -111,9 +118,9 @@
     </li>
     <li>
       <p>
-        Also can test click below Get Saved Search Result button to get the saved
-        search results from MongoDB via PlolicyManagementWebApi microservice by
-        angular httpclient request:
+        Also can test click below Get Saved Search Result button to get the
+        saved search results from MongoDB via PlolicyManagementWebApi
+        microservice by angular httpclient request:
       </p>
       <p>
         <button

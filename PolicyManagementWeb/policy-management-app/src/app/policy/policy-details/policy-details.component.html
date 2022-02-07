@@ -1,4 +1,57 @@
 <div *ngIf="policyDetails">
+  <kendo-grid
+    [data]="gridViewData"
+    [resizable]="true"
+    [pageSize]="pageSize"
+    [skip]="skip"
+    [pageable]="true"
+    (pageChange)="pageChange($event)"
+    [sortable]="{
+      allowUnsort: true,
+      mode: 'single'
+    }"
+    [sort]="sortDesc"
+    (sortChange)="sortChange($event)"
+  >
+    <kendo-grid-column field="id" title="Id" [width]="75"> </kendo-grid-column>
+    <kendo-grid-column field="policyId" title="Policy Id"> </kendo-grid-column>
+    <kendo-grid-column field="policyName" title="PolicyName">
+    </kendo-grid-column>
+    <kendo-grid-column field="startDate" title="Start Date">
+    </kendo-grid-column>
+    <kendo-grid-column field="durationInYears" title="Duration In Years">
+    </kendo-grid-column>
+    <kendo-grid-column field="companyName" title="Company Name">
+    </kendo-grid-column>
+    <kendo-grid-column field="initialDeposit" title="Initial Deposit">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.initialDeposit | currency: "USD" }}
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="policyType" title="Policy Type">
+    </kendo-grid-column>
+    <kendo-grid-column field="userTypes" title="User Types">
+    </kendo-grid-column>
+    <kendo-grid-column field="termsPerYear" title="Terms Per Year">
+    </kendo-grid-column>
+    <kendo-grid-column field="termAmount" title="Term Amount">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.termAmount | currency: "USD" }}
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="interest" title="Interest">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.interest }}%
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="maturityAmount" title="Maturity Amount">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.maturityAmount | currency: "USD" }}
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid>
+</div>
+<!-- <div *ngIf="policyDetails">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -35,4 +88,4 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->
