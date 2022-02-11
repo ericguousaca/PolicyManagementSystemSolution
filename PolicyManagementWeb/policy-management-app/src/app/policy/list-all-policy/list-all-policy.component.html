@@ -2,29 +2,29 @@
 <div *ngIf="error">
   {{ error }}
 </div>
-<div *ngIf="policyDetails">
-  <app-policy-details [policyDetails]="policyDetails"></app-policy-details>
-</div>
-<!-- <div *ngIf="policyDetails">
+<div *ngIf="viewData">
   <kendo-grid
-    [data]="gridViewData"
+    [data]="viewData"
     [resizable]="true"
-    [pageSize]="pageSize"
-    [skip]="skip"
+    [pageSize]="state.take == undefined ? 5 : state.take"
+    [skip]="state.skip == undefined ? 0 : state.skip"
     [pageable]="true"
-    (pageChange)="pageChange($event)"
     [sortable]="{
       allowUnsort: true,
       mode: 'single'
     }"
-    [sort]="sortDesc"
-    (sortChange)="sortChange($event)"
+    [sort]="state.sort == undefined ? defaultSortDesc : state.sort"
+    (dataStateChange)="dataStateChange($event)"
   >
     <kendo-grid-column field="id" title="Id" [width]="75"> </kendo-grid-column>
     <kendo-grid-column field="policyId" title="Policy Id"> </kendo-grid-column>
     <kendo-grid-column field="policyName" title="PolicyName">
     </kendo-grid-column>
-    <kendo-grid-column field="startDate" [format]="'{0:dd/MM/yyyy}'" title="Start Date">
+    <kendo-grid-column
+      field="startDate"
+      [format]="'{0:dd/MM/yyyy}'"
+      title="Start Date"
+    >
     </kendo-grid-column>
     <kendo-grid-column field="durationInYears" title="Duration In Years">
     </kendo-grid-column>
@@ -57,4 +57,4 @@
       </ng-template>
     </kendo-grid-column>
   </kendo-grid>
-</div> -->
+</div>
