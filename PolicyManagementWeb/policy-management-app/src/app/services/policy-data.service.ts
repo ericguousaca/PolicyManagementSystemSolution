@@ -35,7 +35,7 @@ export class PolicyDataService {
     sortBy: string = 'Id',
     sortDirection: string = 'ASC'
   ): Observable<GridDataResult> {
-    // console.log(this.getAllPolicyUrl);
+    console.log(this.getAllPolicyUrl);
     return this.httpClient
       .get<PolicyDetailResponse>(this.getAllPolicyUrl, {
         params: {

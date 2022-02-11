@@ -1,4 +1,4 @@
-import { POLICYDETAILS } from './../../../test-data/policy-data';
+import { MOCKGRIDDATARESULT, POLICYDETAILS } from './../../../test-data/policy-data';
 import { TestBed } from '@angular/core/testing';
 import {
   HttpClientTestingModule,
@@ -19,7 +19,7 @@ describe('PolicyDataService', () => {
   let getPolicySearchResultsUrl =
     baseUrl + '/api/v1.0/PolicySearch/GetSearchPolicyResults';
 
-  let testPolicyDetails = POLICYDETAILS;
+  let mockGridDataResult = MOCKGRIDDATARESULT;
 
   let service: PolicyDataService;
   let testingController: HttpTestingController;
@@ -43,16 +43,17 @@ describe('PolicyDataService', () => {
   });
 
   it('should get all policies', () => {
-    service.getAllPolicy().subscribe((data) => {
-      expect(data).toBeTruthy('No policy details returned');
-      expect(data.length).toBe(4, 'Total test policy detail items are not 4');
+    service.getAllPolicy().subscribe((resultData) => {
+      expect(resultData).toBeTruthy('No policy details returned');
+      expect(resultData.data.length).toBe(5, 'Total policy detail items in View are not 5');
+      expect(resultData.total).toBe(18, 'The mocked total policy details are not 18');
     });
 
     const req = testingController.expectOne(
       (req) => req.url == getAllPolicyUrl
     );
     expect(req.request.method).toEqual('GET');
-    req.flush(testPolicyDetails);
+    req.flush(mockGridDataResult);
   });
 
   it('should retrun correct search results', () => {
@@ -73,7 +74,7 @@ describe('PolicyDataService', () => {
     );
     expect(req.request.method).toEqual('POST');
     req.flush(
-      testPolicyDetails.filter(
+      mockGridDataResult.data.filter(
         (x) =>
           x.policyId == searchParams.policyId &&
           x.policyType.includes(searchParams.policyType) &&

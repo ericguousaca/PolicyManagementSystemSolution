@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
 using PolicyApiLibrary.DbModels;
 using PolicyApiLibrary.Models;
 using System.Collections.Generic;
@@ -51,7 +50,7 @@ namespace PolicyApiLibrary.Repositories
                             .Include(x => x.PolicyType)
                             .Include(x => x.PolicyUserTypes)
                             .ThenInclude(y => y.UserType);
-                       
+
             return await query
                     .OrderBy(x => x.Id)
                     .ToListAsync();

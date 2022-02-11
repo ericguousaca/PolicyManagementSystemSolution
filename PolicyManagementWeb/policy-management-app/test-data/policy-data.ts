@@ -1,4 +1,87 @@
-import { PolicyDetail } from "src/app/models/policy-detail.model";
+import { PolicyDetail } from 'src/app/models/policy-detail.model';
+import { PolicyDetailResponse } from 'src/app/models/policy-detail-response.model';
+import { GridDataResult } from '@progress/kendo-angular-grid';
+
+export const MOCKGRIDDATARESULT: GridDataResult = {
+  total: 18,
+  data: [
+    {
+      id: 1,
+      policyId: 'CP-2021-001',
+      maturityAmount: 7492.0,
+      policyName: 'Test Policy #1',
+      startDate: new Date('2021-12-29'),
+      durationInYears: 3,
+      companyName: 'Test Company 1',
+      initialDeposit: 100.0,
+      policyType: 'Child Plans',
+      userTypes: ['A', 'B', 'C', 'E'],
+      termsPerYear: 2,
+      termAmount: 1100.0,
+      interest: 12,
+    },
+    {
+      id: 2,
+      policyId: 'LI-2021-001',
+      maturityAmount: 9192.0,
+      policyName: 'Test Policy #2',
+      startDate: new Date('2021-12-29'),
+      durationInYears: 3,
+      companyName: 'Test Company #2',
+      initialDeposit: 1200.0,
+      policyType: 'Life Insurance',
+      userTypes: ['A', 'E'],
+      termsPerYear: 2,
+      termAmount: 1200.0,
+      interest: 11,
+    },
+    {
+      id: 3,
+      policyId: 'LI-2022-002',
+      maturityAmount: 11460.0,
+      policyName: 'Test Policy #3',
+      startDate: new Date('2022-01-02'),
+      durationInYears: 3,
+      companyName: 'Test Company #3',
+      initialDeposit: 1200.0,
+      policyType: 'Life Insurance',
+      userTypes: ['A', 'B', 'E'],
+      termsPerYear: 6,
+      termAmount: 500.0,
+      interest: 14,
+    },
+    {
+      id: 4,
+      policyId: 'TI-2022-001',
+      maturityAmount: 6528.0,
+      policyName: 'Travel Policy #1',
+      startDate: new Date('2022-02-04'),
+      durationInYears: 2,
+      companyName: 'Test Company #4',
+      initialDeposit: 1200.0,
+      policyType: 'Travel Insurance',
+      userTypes: ['A', 'B'],
+      termsPerYear: 2,
+      termAmount: 1200.0,
+      interest: 11,
+    },
+    {
+      id: 5,
+      policyId: 'TI-2022-002',
+      maturityAmount: 5736.0,
+      policyName: 'Travel Policy #2',
+      startDate: new Date('2022-02-08'),
+      durationInYears: 2,
+      companyName: 'Test Company #4',
+      initialDeposit: 1200.0,
+      policyType: 'Travel Insurance',
+      userTypes: ['A', 'B', 'E'],
+      termsPerYear: 3,
+      termAmount: 700.0,
+      interest: 8,
+    },
+  ],
+};
 
 export const POLICYDETAILS: PolicyDetail[] = [
   {

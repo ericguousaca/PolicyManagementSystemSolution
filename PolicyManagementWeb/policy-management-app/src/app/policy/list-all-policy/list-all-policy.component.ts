@@ -37,21 +37,10 @@ export class ListAllPolicyComponent implements OnInit {
   ];
 
   constructor(private policyDatatService: PolicyDataService) {
-    this.loadData();
   }
 
   ngOnInit(): void {
-    this.policyDatatService.getAllPolicy().subscribe(
-      (result: GridDataResult) => {
-        // console.log(JSON.stringify(data));
-        console.log(result);
-        this.policyDetails = result.data;
-      },
-      (err) => {
-        this.error = err;
-        console.log(err);
-      }
-    );
+    this.loadData();
   }
 
   private loadData() {
@@ -68,6 +57,7 @@ export class ListAllPolicyComponent implements OnInit {
         },
         (err) => {
           this.error = err;
+          console.log(err);
         }
       );
   }
