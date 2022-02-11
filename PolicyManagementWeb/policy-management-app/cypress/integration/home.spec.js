@@ -18,7 +18,9 @@ describe('Home Page (list-all-policy)', () => {
 
       cy.get('.text-decoration-underline').contains('List All Policies');
       cy.get('table > tbody > tr').should("have.length", 5);
-      cy.contains('table > tbody > tr:nth-child(4) > td:nth-child(6)', 'Test Company #4');
+      cy.get('table > tbody > tr').each((row, index) =>{
+        cy.wrap(row).find('td').eq(0).should('contain', index + 1)
+      })
     });
   })
 })
