@@ -9,6 +9,8 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { AppConstants } from '../models/app-constants.model';
+import { GridDataResult } from '@progress/kendo-angular-grid';
+import { PolicyDetailResponse } from '../models/policy-detail-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,11 +29,32 @@ export class PolicyDataService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getAllPolicy(): Observable<PolicyDetail[]> {
-    console.log(this.getAllPolicyUrl);
+  getAllPolicy(
+    skip: number = -1,
+    pageSize: number = 0,
+    sortBy: string = 'Id',
+    sortDirection: string = 'ASC'
+  ): Observable<GridDataResult> {
+    // console.log(this.getAllPolicyUrl);
     return this.httpClient
-      .get<PolicyDetail[]>(this.getAllPolicyUrl)
-      .pipe(catchError(this.handleError));
+      .get<PolicyDetailResponse>(this.getAllPolicyUrl, {
+        params: {
+          skip: skip,
+          pageSize: pageSize,
+          sortBy: sortBy,
+          sortDirection: sortDirection,
+        },
+      })
+      .pipe(
+        map((res: PolicyDetailResponse) => {
+          const result = <GridDataResult>{
+            data: res.policyDetails,
+            total: res.totalCount,
+          };
+          return result;
+        }),
+        catchError(this.handleError)
+      );
   }
 
   searchPolicy(searchParams: SearchPolicyParams): Observable<PolicyDetail[]> {

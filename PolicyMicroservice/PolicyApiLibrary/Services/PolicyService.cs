@@ -1,4 +1,5 @@
-﻿using PolicyApiLibrary.Builders;
+﻿using CommonLibrary;
+using PolicyApiLibrary.Builders;
 using PolicyApiLibrary.DbModels;
 using PolicyApiLibrary.Models;
 using PolicyApiLibrary.Repositories;
@@ -55,7 +56,7 @@ namespace PolicyApiLibrary.Services
             return htmlMessage;
         }
 
-        public async Task<GetAllPolicyDetailsResponse> GetAllPolicyDetailsAsync()
+        public async Task<GetAllPolicyDetailsResponse> GetAllPolicyDetailsAsync(int skip = -1, int pageSize = 0, string sortBy = "Id", string sortDirection = "ASC")
         {
             GetAllPolicyDetailsResponse response = new GetAllPolicyDetailsResponse();
 
@@ -64,12 +65,29 @@ namespace PolicyApiLibrary.Services
                 List<PolicyDetailViewModel> vmPolicyDetailList = new List<PolicyDetailViewModel>();
 
                 IEnumerable<Policy> policies = await this._policyRepo.GetAllPoliciesAsync();
-
+                                
                 foreach (Policy policy in policies)
                 {
                     PolicyDetailViewModel vmPolicyDetail = this.buildPolicyDetailViewMode(policy);
 
                     vmPolicyDetailList.Add(vmPolicyDetail);
+                }
+
+                response.TotalCount = vmPolicyDetailList.Count;
+
+                if(sortBy.ToUpper() == "StartDate".ToUpper())
+                {
+                    sortBy = "startDateInDateTime";
+                }
+                                
+                if (skip >= 0 && pageSize > 0)
+                {
+                    vmPolicyDetailList = vmPolicyDetailList.OrderDataBy($"{sortBy} {sortDirection}").Skip(skip).Take(pageSize).ToList();
+                }
+                else
+                {
+
+                    vmPolicyDetailList = vmPolicyDetailList.OrderDataBy($"{sortBy} {sortDirection}").ToList();
                 }
 
                 response.Success = true;

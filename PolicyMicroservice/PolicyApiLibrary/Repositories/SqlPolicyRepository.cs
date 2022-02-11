@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using PolicyApiLibrary.DbModels;
 using PolicyApiLibrary.Models;
 using System.Collections.Generic;
@@ -46,12 +47,14 @@ namespace PolicyApiLibrary.Repositories
 
         public async Task<IEnumerable<Policy>> GetAllPoliciesAsync()
         {
-            return await this._policyDbContext.Policies
-                                    .Include(x => x.PolicyType)
-                                    .Include(x => x.PolicyUserTypes)
-                                    .ThenInclude(y => y.UserType)
-                                    .OrderBy(x => x.Id)
-                                    .ToListAsync();
+            var query = this._policyDbContext.Policies
+                            .Include(x => x.PolicyType)
+                            .Include(x => x.PolicyUserTypes)
+                            .ThenInclude(y => y.UserType);
+                       
+            return await query
+                    .OrderBy(x => x.Id)
+                    .ToListAsync();
         }
 
         public async Task<Policy> GetLastPolicyByPolicyTypeIdAsync(string policyTypeId)

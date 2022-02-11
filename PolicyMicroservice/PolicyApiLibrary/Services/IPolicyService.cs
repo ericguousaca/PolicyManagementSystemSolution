@@ -10,7 +10,7 @@ namespace PolicyApiLibrary.Services
     {
         Task<RegisterPolicyResponse> RegisterPolicyAsync(PolicyViewModel vmPolicy);
 
-        Task<GetAllPolicyDetailsResponse> GetAllPolicyDetailsAsync();
+        Task<GetAllPolicyDetailsResponse> GetAllPolicyDetailsAsync(int skip = -1, int pageSize = 0, string sortBy = "Id", string sortDirection = "ASC");
 
         string GeneratePolicyRegitserHtmlMessage(Policy policy, string templateFilePath);
         Task<SearchPolicyDetailsResponse> SearchPolicyDetailsAsync(SearchPolicyParamModel paramModel);

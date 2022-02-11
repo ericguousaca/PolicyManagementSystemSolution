@@ -2,6 +2,59 @@
 <div *ngIf="error">
   {{ error }}
 </div>
-<div *ngIf="policyDetails">
-  <app-policy-details [policyDetails]="policyDetails"></app-policy-details>
+<div *ngIf="viewData">
+  <kendo-grid
+    [data]="viewData"
+    [resizable]="true"
+    [pageSize]="state.take == undefined ? 5 : state.take"
+    [skip]="state.skip == undefined ? 0 : state.skip"
+    [pageable]="true"
+    [sortable]="{
+      allowUnsort: true,
+      mode: 'single'
+    }"
+    [sort]="state.sort == undefined ? defaultSortDesc : state.sort"
+    (dataStateChange)="dataStateChange($event)"
+  >
+    <kendo-grid-column field="id" title="Id" [width]="75"> </kendo-grid-column>
+    <kendo-grid-column field="policyId" title="Policy Id"> </kendo-grid-column>
+    <kendo-grid-column field="policyName" title="PolicyName">
+    </kendo-grid-column>
+    <kendo-grid-column
+      field="startDate"
+      [format]="'{0:dd/MM/yyyy}'"
+      title="Start Date"
+    >
+    </kendo-grid-column>
+    <kendo-grid-column field="durationInYears" title="Duration In Years">
+    </kendo-grid-column>
+    <kendo-grid-column field="companyName" title="Company Name">
+    </kendo-grid-column>
+    <kendo-grid-column field="initialDeposit" title="Initial Deposit">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.initialDeposit | currency: "USD" }}
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="policyType" title="Policy Type">
+    </kendo-grid-column>
+    <kendo-grid-column field="userTypes" title="User Types">
+    </kendo-grid-column>
+    <kendo-grid-column field="termsPerYear" title="Terms Per Year">
+    </kendo-grid-column>
+    <kendo-grid-column field="termAmount" title="Term Amount">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.termAmount | currency: "USD" }}
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="interest" title="Interest">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.interest }}%
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="maturityAmount" title="Maturity Amount">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.maturityAmount | currency: "USD" }}
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid>
 </div>
