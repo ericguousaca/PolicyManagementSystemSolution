@@ -77,7 +77,7 @@ namespace PolicyApi.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        public async Task<ActionResult<PolicyDetailResponse>> GetAll(int skip = -1, int pageSize = 0, string sortBy= "Id", string sortDirection = "ASC")
+        public async Task<ActionResult<PolicyDetailResponse>> GetAll(int skip = -1, int pageSize = 0, string sortBy = "Id", string sortDirection = "ASC")
         {
             try
             {
@@ -88,11 +88,11 @@ namespace PolicyApi.Controllers
                 if (response.Success)
                 {
                     this._logger.LogInformation("Got all policies success.");
-                    
+
                     PolicyDetailResponse res = new PolicyDetailResponse();
                     res.TotalCount = response.TotalCount;
                     res.PolicyDetails = response.PolicyDetails.ToList();
-                    
+
                     return Ok(res);
                 }
                 else

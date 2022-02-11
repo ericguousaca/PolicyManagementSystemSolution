@@ -65,7 +65,7 @@ namespace PolicyApiLibrary.Services
                 List<PolicyDetailViewModel> vmPolicyDetailList = new List<PolicyDetailViewModel>();
 
                 IEnumerable<Policy> policies = await this._policyRepo.GetAllPoliciesAsync();
-                                
+
                 foreach (Policy policy in policies)
                 {
                     PolicyDetailViewModel vmPolicyDetail = this.buildPolicyDetailViewMode(policy);
@@ -75,11 +75,11 @@ namespace PolicyApiLibrary.Services
 
                 response.TotalCount = vmPolicyDetailList.Count;
 
-                if(sortBy.ToUpper() == "StartDate".ToUpper())
+                if (sortBy.ToUpper() == "StartDate".ToUpper())
                 {
                     sortBy = "startDateInDateTime";
                 }
-                                
+
                 if (skip >= 0 && pageSize > 0)
                 {
                     vmPolicyDetailList = vmPolicyDetailList.OrderDataBy($"{sortBy} {sortDirection}").Skip(skip).Take(pageSize).ToList();
