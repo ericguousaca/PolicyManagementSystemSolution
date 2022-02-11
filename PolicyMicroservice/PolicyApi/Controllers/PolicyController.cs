@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using PolicyApi.Response;
 using PolicyApiLibrary.Models;
 using PolicyApiLibrary.Services;
 using PolicyApiLibrary.Services.ServiceResponse;
 using PolicyApiLibrary.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,6 +22,7 @@ namespace PolicyApi.Controllers
         private readonly ILogger<PolicyController> _logger;
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IPolicyService _policyService;
+
 
         public PolicyController(ILogger<PolicyController> logger, IWebHostEnvironment hostingEnvironment, IPolicyService policyService)
         {
@@ -74,18 +77,23 @@ namespace PolicyApi.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        public async Task<ActionResult<PolicyDetailViewModel>> GetAll()
+        public async Task<ActionResult<PolicyDetailResponse>> GetAll(int skip = -1, int pageSize = 0, string sortBy= "Id", string sortDirection = "ASC")
         {
             try
             {
                 this._logger.LogInformation("Started get all policies.");
 
-                GetAllPolicyDetailsResponse response = await this._policyService.GetAllPolicyDetailsAsync();
+                GetAllPolicyDetailsResponse response = await this._policyService.GetAllPolicyDetailsAsync(skip, pageSize, sortBy, sortDirection);
 
                 if (response.Success)
                 {
                     this._logger.LogInformation("Got all policies success.");
-                    return Ok(response.PolicyDetails);
+                    
+                    PolicyDetailResponse res = new PolicyDetailResponse();
+                    res.TotalCount = response.TotalCount;
+                    res.PolicyDetails = response.PolicyDetails.ToList();
+                    
+                    return Ok(res);
                 }
                 else
                 {
@@ -103,7 +111,7 @@ namespace PolicyApi.Controllers
 
         [HttpPost]
         [Route("Searches")]
-        public async Task<ActionResult<PolicyDetailViewModel>> SearchPolicy(SearchPolicyParamModel searchParamModel)
+        public async Task<ActionResult<List<PolicyDetailViewModel>>> SearchPolicy(SearchPolicyParamModel searchParamModel)
         {
             try
             {

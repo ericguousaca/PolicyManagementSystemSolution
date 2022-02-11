@@ -33,6 +33,7 @@ namespace PolicyApiLibrary.Builders
             this._policyDetail.TermsPerYear = this._policy.TermsPerYear;
             this._policyDetail.TermAmount = this._policy.TermAmount;
             this._policyDetail.Interest = this._policy.Interest;
+            this._policyDetail.StartDateInDateTime = this._policy.StartDate;
         }
 
         public void BuildUserTypeSection()

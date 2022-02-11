@@ -46,6 +46,7 @@ export class PolicyDetailsComponent implements OnInit {
 
   public sortChange(sort: unknown): void {
     this.sortDesc = sort as SortDescriptor[];
+    console.log(this.sortDesc);
     this.loadItems();
   }
 }

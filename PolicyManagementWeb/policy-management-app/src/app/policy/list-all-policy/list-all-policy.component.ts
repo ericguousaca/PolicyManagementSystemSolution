@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GridDataResult } from '@progress/kendo-angular-grid';
 import { PolicyDetail } from 'src/app/models/policy-detail.model';
 import { PolicyDataService } from 'src/app/services/policy-data.service';
 
@@ -13,9 +14,10 @@ export class ListAllPolicyComponent implements OnInit {
   constructor(private policyDatatService: PolicyDataService) {}
 
   ngOnInit(): void {
-    this.policyDatatService.getAllPolicy().subscribe((data: PolicyDetail[]) => {
+    this.policyDatatService.getAllPolicy().subscribe((result: GridDataResult) => {
       // console.log(JSON.stringify(data));
-      this.policyDetails = data;
+      console.log(result);
+      this.policyDetails = result.data;
     },
     err =>{
       this.error = err;

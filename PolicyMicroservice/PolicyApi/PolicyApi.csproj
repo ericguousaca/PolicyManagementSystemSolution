@@ -9,22 +9,18 @@
     <Compile Remove="Repositories\**" />
     <Compile Remove="Services\**" />
     <Compile Remove="Validations\**" />
-    <Compile Remove="ViewModels\**" />
     <Content Remove="DbModels\**" />
     <Content Remove="Repositories\**" />
     <Content Remove="Services\**" />
     <Content Remove="Validations\**" />
-    <Content Remove="ViewModels\**" />
     <EmbeddedResource Remove="DbModels\**" />
     <EmbeddedResource Remove="Repositories\**" />
     <EmbeddedResource Remove="Services\**" />
     <EmbeddedResource Remove="Validations\**" />
-    <EmbeddedResource Remove="ViewModels\**" />
     <None Remove="DbModels\**" />
     <None Remove="Repositories\**" />
     <None Remove="Services\**" />
     <None Remove="Validations\**" />
-    <None Remove="ViewModels\**" />
   </ItemGroup>
 
   <ItemGroup>
