@@ -37,6 +37,10 @@ namespace PolicyManagementWebApi.Messaging.Consumers
 
                 await this._hubContext.Clients.Client(connectionId).SendAsync("SearchPolicyAsync", SearchPolicyAsyncStatus.RESULT_RECEIVED, null);
 
+                this._logger.LogInformation("Success sent the RESULT_RECEIVED set to Client asyn by SignalR.");
+
+                this._logger.LogInformation("Started save the search result to MongoDB.");
+
                 SearchPolicyResultCommand mongoResultCommand = new SearchPolicyResultCommand();
                 mongoResultCommand._id = Guid.NewGuid().ToString();
                 mongoResultCommand.Success = resultCommand.Success;
@@ -48,7 +52,11 @@ namespace PolicyManagementWebApi.Messaging.Consumers
                 System.Threading.Thread.Sleep(5000);
                 await this._searchPolicyRepo.AddSearchPolicyResultCommand(mongoResultCommand);
 
+                this._logger.LogInformation("Success saved the search result to MongoDB.");
+
                 await this._hubContext.Clients.Client(connectionId).SendAsync("SearchPolicyAsync", SearchPolicyAsyncStatus.RESULT_AVAILABLE, mongoResultCommand.PolicyDetails);
+
+                this._logger.LogInformation("Success sent the SEACH_AVAILABLE status and search result set to Client asyn by SignalR.");
             }
             catch (Exception ex)
             {

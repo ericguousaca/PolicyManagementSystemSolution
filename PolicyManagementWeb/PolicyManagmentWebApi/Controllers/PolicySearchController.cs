@@ -38,18 +38,24 @@ namespace PolicyManagementWebApi.Controllers
         {
             try
             {
-                this._logger.LogInformation("Submit search policy command to RabbitMq");
+                this._logger.LogInformation("Started submit search policy command to RabbitMq.");
 
                 SubmitSearchPolicyCommandResponse response = await this._policySearchService.SubmitSearchPolicyCommand(paramsModel);
+
+                this._logger.LogInformation("Success submitted the search policy command to RabbitMq.");
 
                 if (response.Success)
                 {
                     await this._hubContext.Clients.Client(paramsModel.SearchId).SendAsync("SearchPolicyAsync", SearchPolicyAsyncStatus.SEARCH_SENT, null);
+
+
+                    this._logger.LogInformation("Success sent the SEARCH_SENT status to Client asyn by SignalR.");
                     return Ok(response.SubmittedModel);
                 }
                 else
                 {
                     await this._hubContext.Clients.Client(paramsModel.SearchId).SendAsync("SearchPolicyAsync", SearchPolicyAsyncStatus.SEARCH_ERROR, null);
+                    this._logger.LogError("Failed submitting the search policy command to RabbitMq.");
                     return StatusCode(StatusCodes.Status500InternalServerError, response.PublicMessage);
                 }
             }
